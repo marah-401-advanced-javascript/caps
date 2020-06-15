@@ -52,14 +52,13 @@ client.connect(PORT, HOST, () => {
     setTimeout(() => {
       let pickEvent = JSON.stringify({ event: 'pickup', time: new Date() ,  payload: payload });
       client.write(pickEvent);
-      setTimeout(() => {
-        let transitEvent = JSON.stringify({ event: 'in-transit', time: new Date() ,  payload: payload });
-        client.write(transitEvent);
-        let deliverEvent = JSON.stringify({ event: 'delivered', time: new Date() ,  payload: payload });
-        client.write(deliverEvent);
-      }, 3000);
     }, 1000);
-
+    setTimeout(() => {
+      let transitEvent = JSON.stringify({ event: 'in-transit', time: new Date() ,  payload: payload });
+      client.write(transitEvent);
+    }, 3000);
+    let deliverEvent = JSON.stringify({ event: 'delivered', time: new Date() ,  payload: payload });
+    client.write(deliverEvent);
   }
 
   sendMessage();

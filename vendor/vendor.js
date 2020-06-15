@@ -23,4 +23,3 @@ client.connect(PORT, HOST, ()=> {
 
 client.on('error', (err) => console.log(`vendor error ${err.message}`));
 
-// module.exports = sendMessage;
